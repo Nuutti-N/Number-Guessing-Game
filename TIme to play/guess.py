@@ -31,11 +31,16 @@ def menu():
 
 
 def easy():
+
     chances = 15
     number = random.randint(1, 100)
     print("Fine! You have selected the Easy difficulty level.")
     while chances > 0:
-        guess = int(input("Enter your guess (1-100): "))
+        try:
+            guess = int(input("Enter your guess (1-100): "))
+        except ValueError:
+            print(Fore.RED + "Invalid input! Please enter a number.")
+            continue
         if guess > number:
             print(f"Incorrect! The number is less than {guess}.")
             chances -= 1
@@ -47,7 +52,7 @@ def easy():
             break
     print(f"Chances left: {chances}")
     if chances == 0:
-        print(Fore.RED + f"YOu lost the number was {number}.")
+        print(Fore.RED + f"You lost the number was {number}.")
     return guess
 
 
@@ -56,7 +61,10 @@ def Medium():
     number = random.randint(1, 100)
     print("Boldness! You have selected the Medium difficulty level.")
     while chances > 0:
-        guess = int(input("Enter your guess (1-100): "))
+        try:
+            guess = int(input("Enter your guess (1-100): "))
+        except ValueError:
+            print(Fore.RED + "Invalid input! Please enter a number.")
         if guess > number:
             print(f"Incorrect! The number is less than {guess}.")
             chances -= 1
@@ -79,7 +87,10 @@ def Hard():
     number = random.randint(1, 100)
     print("AMAZING! You have selected the hard difficulty level.")
     while chances > 0:
-        guess = int(input("Enter your guess: "))
+        try:
+            guess = int(input("Enter your guess: "))
+        except ValueError:
+            print(Fore.RED + "Invalid input! Please enter a number.")
         if guess > number:
             print(f"Incorrect! The number is less than {guess}.")
             chances -= 1
@@ -111,7 +122,7 @@ def main():
         else:
             print("Selection is not avaible, Try again!")
 
-    print("It's great that you wasted your time on me")
+    print("It's great that you wasted your time on me!")
     print("See you next time.")
     return
 
